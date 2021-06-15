@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vueBook</title>
+</head>
+<body>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<div id="app">
+    <button @click="f=!f">toggle</button>
+    <input v-hidden:fs.foo.var.list="f">
+    <!--foo var list值Boolen-->
+    <!--fs 为指令参数 ：符号后面拼接为传递值-->
+</div>
+<script>
+  Vue.directive('hidden', {
+    update: function (el, binding) {
+      el.style.display = binding.value ? 'none' : 'inline';
+      console.log(binding)
+      //value值Boolen
+      //oldValue
+    }
+  });
+
+  new Vue(
+    {
+      el: '#app',
+      data() {
+        return {
+          f: false,
+        }
+      }
+    }
+  )
+</script>
+</body>
+</html>
