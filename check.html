@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vueBook</title>
+</head>
+<body>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<div id="app">
+    <label for="checkbox" v-for="(check,index) in 3" :key="index">
+        <span>{{index + 1}}</span>
+        <input type="checkbox" :value="check" v-model="checks" @change="change">
+    </label>
+
+    <label for="checkbox">{{ checks }}</label>
+</div>
+<script>
+  var a = new Vue({
+    el: '#app',
+    data() {
+      return {
+        checks: [1, 2, 3]
+      }
+    },
+    methods: {
+      change() {
+        //快去去重 Array.from(new Set(arr))，然后排序
+        //arr.sort()
+        //arr.sort((a,b)=>{return b-a;})
+        const data = this.checks.sort((a, b) => {
+          return a - b;
+        });//
+        console.log(data)
+      }
+    }
+  })
+</script>
+</body>
+</html>
